@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Phoenix Group Alliance</title>
+    <style>
+        /* বেসিক সেটআপ */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Times New Roman', serif;
+            overflow: hidden;
+        }
+
+        /* মূল কন্টেইনার */
+        .logo-container {
+            text-align: center;
+            position: relative;
+            padding: 50px;
+            background: radial-gradient(circle, #2a2a2a 0%, #111 100%);
+            border-radius: 20px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.8);
+            /* প্রিন্টের জন্য সাইজ */
+            width: 800px;
+            height: 800px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* SVG ইমেজের জন্য স্টাইল (এখানে আমরা একটি ডামি SVG ব্যবহার করছি, 
+           তবে আপনি চাইলে আসল ফিনিক্সের SVG পাথ বসাতে পারেন) */
+        .phoenix-logo svg {
+            width: 400px;
+            height: 400px;
+            filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.8));
+            /* গ্রিন এবং সিলভার মেটালিক লুক */
+            fill: url(#greenGradient);
+            stroke: #a8a8a8;
+            stroke-width: 2px;
+        }
+
+        /* টেক্সট স্টাইল */
+        .title-text {
+            font-size: 60px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-top: 20px;
+            /* 3D মেটালিক গ্রিন টেক্সট ইফেক্ট */
+            color: #1c8a5a;
+            background: linear-gradient(to bottom, #7fffd4 0%, #1c8a5a 50%, #0b3d26 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 
+                0px 2px 0px #0b3d26,
+                0px 4px 0px #0b3d26,
+                0px 6px 0px #0b3d26,
+                0px 8px 10px rgba(0,0,0,0.8);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* সাব-টাইটেল স্টাইল */
+        .subtitle-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #cccccc;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-top: 10px;
+            text-shadow: 
+                0px 2px 0px #333,
+                0px 3px 5px rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        /* ডেকোরেটিভ লাইন */
+        .subtitle-text::before,
+        .subtitle-text::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #a8a8a8, transparent);
+            border-radius: 2px;
+        }
+
+        /* নিচের ছোট টেক্সট */
+        .footer-text {
+            font-size: 14px;
+            color: #999;
+            letter-spacing: 3px;
+            margin-top: 15px;
+            text-transform: uppercase;
+            text-shadow: 0px 1px 2px #000;
+        }
+
+        /* ডেকোরেটিভ ডিভাইডার */
+        .divider {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #555, transparent);
+            margin: 10px 0;
+            position: relative;
+        }
+        
+        /* ছোট ডায়মন্ড শেপ */
+        .divider::after {
+            content: "♦";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #1c8a5a;
+            font-size: 16px;
+            background: #1a1a1a;
+            padding: 0 10px;
+        }
+
+        /* 4K/প্রিন্টের জন্য মিডিয়া কুয়েরি */
+        @media print {
+            body { background: white; }
+            .logo-container { 
+                box-shadow: none; 
+                background: white; 
+                border: 2px solid #000;
+            }
+            .title-text { text-shadow: none; color: #000; -webkit-text-fill-color: #000; background: none; }
+            .subtitle-text { color: #000; }
+            .footer-text { color: #000; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="logo-container">
+        <!-- ফিনিক্স পাখির SVG (এটি একটি জেনেরিক ফিনিক্স, আপনি চাইলে আপনার পছন্দের SVG পাথ বসাতে পারেন) -->
+        <div class="phoenix-logo">
+            <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <!-- গ্রিন গ্রেডিয়েন্ট -->
+                    <linearGradient id="greenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#4caf50" />
+                        <stop offset="50%" stop-color="#1c8a5a" />
+                        <stop offset="100%" stop-color="#0b3d26" />
+                    </linearGradient>
+                    <!-- সিলভার গ্রেডিয়েন্ট -->
+                    <linearGradient id="silverGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#e0e0e0" />
+                        <stop offset="50%" stop-color="#a8a8a8" />
+                        <stop offset="100%" stop-color="#555555" />
+                    </linearGradient>
+                </defs>
+                
+                <!-- আউটার রিং -->
+                <circle cx="250" cy="250" r="180" fill="none" stroke="url(#silverGradient)" stroke-width="15" opacity="0.8"/>
+                
+                <!-- ফিনিক্স বডি এবং উইংস (সিম্পলিফাইড পাথ) -->
+                <path d="M250 80 
+                         C 220 120, 180 100, 150 150 
+                         C 180 180, 220 180, 230 200 
+                         C 200 220, 180 250, 150 280 
+                         C 200 280, 220 250, 240 230 
+                         C 240 280, 220 320, 200 380 
+                         C 240 360, 250 320, 250 300 
+                         C 250 320, 260 360, 300 380 
+                         C 280 320, 260 280, 260 230 
+                         C 280 250, 300 280, 350 280 
+                         C 320 250, 300 220, 270 200 
+                         C 280 180, 320 180, 350 150 
+                         C 320 100, 280 120, 250 80 Z" 
+                      fill="url(#greenGradient)" 
+                      stroke="#a8a8a8" 
+                      stroke-width="4"
+                      stroke-linejoin="round"/>
+                      
+                <!-- ফিনিক্সের মাথা এবং চোখের ডিটেইলস -->
+                <path d="M250 80 L 260 60 L 250 70 L 240 60 Z" fill="url(#silverGradient)"/>
+                <circle cx="255" cy="85" r="3" fill="#fff" />
+            </svg>
+        </div>
+
+        <!-- মেইন টেক্সট -->
+        <h1 class="title-text">GREEN PHOENIX</h1>
+        
+        <!-- সাব টেক্সট -->
+        <div class="subtitle-text">GROUP ALLIANCE</div>
+        
+        <!-- ডিভাইডার -->
+        <div class="divider" style="width: 70%; margin: 15px auto;"></div>
+        
+        <!-- ফুটার টেক্সট -->
+        <div class="footer-text">INTERGRATED NETWORK LLP</div>
+    </div>
+
+</body>
+</html>
