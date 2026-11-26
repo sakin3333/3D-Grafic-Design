@@ -1,208 +1,318 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Phoenix Group Alliance</title>
-    <style>
-        /* বেসিক সেটআপ */
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #1a1a1a;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            font-family: 'Times New Roman', serif;
-            overflow: hidden;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Green Phoenix — Emblem Showcase</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        /* মূল কন্টেইনার */
-        .logo-container {
-            text-align: center;
-            position: relative;
-            padding: 50px;
-            background: radial-gradient(circle, #2a2a2a 0%, #111 100%);
-            border-radius: 20px;
-            box-shadow: 0 0 50px rgba(0,0,0,0.8);
-            /* প্রিন্টের জন্য সাইজ */
-            width: 800px;
-            height: 800px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
+    :root {
+      --bg-dark: #0e1011;
+      --bg-radial: radial-gradient(circle at 50% 38%, #222628 0%, #111315 55%, #090a0b 100%);
+      --emerald-light: #47d192;
+      --emerald-mid: #168a59;
+      --emerald-dark: #073b26;
+      --silver-light: #eef2f5;
+      --silver-mid: #9aa3ab;
+      --silver-dark: #3a4046;
+    }
 
-        /* SVG ইমেজের জন্য স্টাইল (এখানে আমরা একটি ডামি SVG ব্যবহার করছি, 
-           তবে আপনি চাইলে আসল ফিনিক্সের SVG পাথ বসাতে পারেন) */
-        .phoenix-logo svg {
-            width: 400px;
-            height: 400px;
-            filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.8));
-            /* গ্রিন এবং সিলভার মেটালিক লুক */
-            fill: url(#greenGradient);
-            stroke: #a8a8a8;
-            stroke-width: 2px;
-        }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--bg-dark);
+      background-image: var(--bg-radial);
+      font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #e6ece9;
+      overflow-x: hidden;
+      padding: 24px;
+    }
 
-        /* টেক্সট স্টাইল */
-        .title-text {
-            font-size: 60px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            margin-top: 20px;
-            /* 3D মেটালিক গ্রিন টেক্সট ইফেক্ট */
-            color: #1c8a5a;
-            background: linear-gradient(to bottom, #7fffd4 0%, #1c8a5a 50%, #0b3d26 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 
-                0px 2px 0px #0b3d26,
-                0px 4px 0px #0b3d26,
-                0px 6px 0px #0b3d26,
-                0px 8px 10px rgba(0,0,0,0.8);
-            position: relative;
-            z-index: 2;
-        }
+    /* Subtle dark grain texture */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.08;
+      background-image: radial-gradient(#ffffff 0.6px, transparent 0.6px);
+      background-size: 3px 3px;
+    }
 
-        /* সাব-টাইটেল স্টাইল */
-        .subtitle-text {
-            font-size: 24px;
-            font-weight: bold;
-            color: #cccccc;
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            margin-top: 10px;
-            text-shadow: 
-                0px 2px 0px #333,
-                0px 3px 5px rgba(0,0,0,0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-        }
+    .emblem-stage {
+      position: relative;
+      width: 100%;
+      max-width: 720px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      filter: drop-shadow(0 24px 45px rgba(0, 0, 0, 0.85));
+    }
 
-        /* ডেকোরেটিভ লাইন */
-        .subtitle-text::before,
-        .subtitle-text::after {
-            content: "";
-            display: block;
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, transparent, #a8a8a8, transparent);
-            border-radius: 2px;
-        }
+    .phoenix-svg {
+      width: 100%;
+      max-width: 470px;
+      height: auto;
+      display: block;
+    }
 
-        /* নিচের ছোট টেক্সট */
-        .footer-text {
-            font-size: 14px;
-            color: #999;
-            letter-spacing: 3px;
-            margin-top: 15px;
-            text-transform: uppercase;
-            text-shadow: 0px 1px 2px #000;
-        }
+    .text-stack {
+      margin-top: -12px;
+      width: 100%;
+      max-width: 660px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      z-index: 2;
+    }
 
-        /* ডেকোরেটিভ ডিভাইডার */
-        .divider {
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #555, transparent);
-            margin: 10px 0;
-            position: relative;
-        }
-        
-        /* ছোট ডায়মন্ড শেপ */
-        .divider::after {
-            content: "♦";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #1c8a5a;
-            font-size: 16px;
-            background: #1a1a1a;
-            padding: 0 10px;
-        }
+    .brand-title {
+      font-size: clamp(1.85rem, 5.2vw, 3.35rem);
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      line-height: 1.08;
+      background: linear-gradient(
+        180deg,
+        #68e4aa 0%,
+        #1fa36b 36%,
+        #0c5738 52%,
+        #2ec282 78%,
+        #8ef2c3 100%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter:
+        drop-shadow(0 2px 0 rgba(215, 230, 224, 0.45))
+        drop-shadow(0 6px 10px rgba(0, 0, 0, 0.9));
+    }
 
-        /* 4K/প্রিন্টের জন্য মিডিয়া কুয়েরি */
-        @media print {
-            body { background: white; }
-            .logo-container { 
-                box-shadow: none; 
-                background: white; 
-                border: 2px solid #000;
-            }
-            .title-text { text-shadow: none; color: #000; -webkit-text-fill-color: #000; background: none; }
-            .subtitle-text { color: #000; }
-            .footer-text { color: #000; }
-        }
-    </style>
+    .sub-alliance-wrap {
+      margin-top: 8px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .wing-rule {
+      height: 3px;
+      flex: 1;
+      max-width: 120px;
+      background: linear-gradient(90deg, transparent, #b8c2ca, #5b636a);
+      border-radius: 999px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    }
+
+    .wing-rule.right {
+      background: linear-gradient(270deg, transparent, #b8c2ca, #5b636a);
+    }
+
+    .sub-alliance {
+      font-size: clamp(0.85rem, 2.3vw, 1.35rem);
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      background: linear-gradient(180deg, #f3f7fa 0%, #b4bec7 48%, #5b646c 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.9));
+      white-space: nowrap;
+    }
+
+    .network-line {
+      margin-top: 8px;
+      font-size: clamp(0.7rem, 1.85vw, 1.05rem);
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      background: linear-gradient(180deg, #9ce6c3 0%, #1d8f5f 55%, #0d4b31 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.9));
+    }
+  </style>
 </head>
 <body>
+  <main class="emblem-stage" aria-label="Green Phoenix Group Alliance Integrated Network LLP">
+    <svg
+      class="phoenix-svg"
+      viewBox="0 0 600 500"
+      xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      aria-label="Green Phoenix emblem with metallic silver ring"
+    >
+      <defs>
+        <!-- Metallic Silver Ring Gradients -->
+        <linearGradient id="silverRingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#f5f8fa" />
+          <stop offset="28%" stop-color="#9ca6b0" />
+          <stop offset="55%" stop-color="#485057" />
+          <stop offset="80%" stop-color="#dce3e8" />
+          <stop offset="100%" stop-color="#5a636b" />
+        </linearGradient>
 
-    <div class="logo-container">
-        <!-- ফিনিক্স পাখির SVG (এটি একটি জেনেরিক ফিনিক্স, আপনি চাইলে আপনার পছন্দের SVG পাথ বসাতে পারেন) -->
-        <div class="phoenix-logo">
-            <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <!-- গ্রিন গ্রেডিয়েন্ট -->
-                    <linearGradient id="greenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#4caf50" />
-                        <stop offset="50%" stop-color="#1c8a5a" />
-                        <stop offset="100%" stop-color="#0b3d26" />
-                    </linearGradient>
-                    <!-- সিলভার গ্রেডিয়েন্ট -->
-                    <linearGradient id="silverGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#e0e0e0" />
-                        <stop offset="50%" stop-color="#a8a8a8" />
-                        <stop offset="100%" stop-color="#555555" />
-                    </linearGradient>
-                </defs>
-                
-                <!-- আউটার রিং -->
-                <circle cx="250" cy="250" r="180" fill="none" stroke="url(#silverGradient)" stroke-width="15" opacity="0.8"/>
-                
-                <!-- ফিনিক্স বডি এবং উইংস (সিম্পলিফাইড পাথ) -->
-                <path d="M250 80 
-                         C 220 120, 180 100, 150 150 
-                         C 180 180, 220 180, 230 200 
-                         C 200 220, 180 250, 150 280 
-                         C 200 280, 220 250, 240 230 
-                         C 240 280, 220 320, 200 380 
-                         C 240 360, 250 320, 250 300 
-                         C 250 320, 260 360, 300 380 
-                         C 280 320, 260 280, 260 230 
-                         C 280 250, 300 280, 350 280 
-                         C 320 250, 300 220, 270 200 
-                         C 280 180, 320 180, 350 150 
-                         C 320 100, 280 120, 250 80 Z" 
-                      fill="url(#greenGradient)" 
-                      stroke="#a8a8a8" 
-                      stroke-width="4"
-                      stroke-linejoin="round"/>
-                      
-                <!-- ফিনিক্সের মাথা এবং চোখের ডিটেইলস -->
-                <path d="M250 80 L 260 60 L 250 70 L 240 60 Z" fill="url(#silverGradient)"/>
-                <circle cx="255" cy="85" r="3" fill="#fff" />
-            </svg>
-        </div>
+        <linearGradient id="silverInnerGroove" x1="0%" y1="100%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#2b3036" />
+          <stop offset="50%" stop-color="#cfd6dc" />
+          <stop offset="100%" stop-color="#3c4248" />
+        </linearGradient>
 
-        <!-- মেইন টেক্সট -->
-        <h1 class="title-text">GREEN PHOENIX</h1>
-        
-        <!-- সাব টেক্সট -->
-        <div class="subtitle-text">GROUP ALLIANCE</div>
-        
-        <!-- ডিভাইডার -->
-        <div class="divider" style="width: 70%; margin: 15px auto;"></div>
-        
-        <!-- ফুটার টেক্সট -->
-        <div class="footer-text">INTERGRATED NETWORK LLP</div>
+        <!-- Emerald / Green Metallic Gradients -->
+        <linearGradient id="emeraldFeatherGrad" x1="15%" y1="0%" x2="85%" y2="100%">
+          <stop offset="0%" stop-color="#69ebb0" />
+          <stop offset="35%" stop-color="#199662" />
+          <stop offset="70%" stop-color="#0a4f33" />
+          <stop offset="100%" stop-color="#29b87a" />
+        </linearGradient>
+
+        <linearGradient id="emeraldDarkGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#1b8759" />
+          <stop offset="100%" stop-color="#05291a" />
+        </linearGradient>
+
+        <linearGradient id="silverTrimGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#8b959e" />
+          <stop offset="50%" stop-color="#f2f6f9" />
+          <stop offset="100%" stop-color="#677078" />
+        </linearGradient>
+
+        <filter id="bevelShadow" x="-15%" y="-15%" width="130%" height="130%">
+          <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000000" flood-opacity="0.75" />
+        </filter>
+      </defs>
+
+      <!-- Back Silver Ring -->
+      <g filter="url(#bevelShadow)">
+        <circle
+          cx="300"
+          cy="285"
+          r="128"
+          fill="none"
+          stroke="url(#silverRingGrad)"
+          stroke-width="22"
+        />
+        <circle
+          cx="300"
+          cy="285"
+          r="128"
+          fill="none"
+          stroke="url(#silverInnerGroove)"
+          stroke-width="5"
+          opacity="0.75"
+        />
+      </g>
+
+      <!-- Flowing Tail Feathers (Left & Right Plumes) -->
+      <g filter="url(#bevelShadow)">
+        <!-- Left outer tail plume -->
+        <path
+          d="M275 315 C225 320, 178 362, 185 415 C190 448, 225 462, 250 445 C224 442, 212 418, 222 392 C232 365, 260 346, 286 336 Z"
+          fill="url(#emeraldFeatherGrad)"
+          stroke="url(#silverTrimGrad)"
+          stroke-width="2.5"
+        />
+        <!-- Left inner tail plume -->
+        <path
+          d="M285 325 C248 345, 224 388, 236 428 C244 452, 272 458, 288 440 C266 434, 258 408, 266 382 C273 360, 288 344, 298 335 Z"
+          fill="url(#emeraldDarkGrad)"
+          stroke="url(#silverTrimGrad)"
+          stroke-width="2.2"
+        />
+        <!-- Right outer tail plume -->
+        <path
+          d="M325 315 C375 320, 422 362, 415 415 C410 448, 375 462, 350 445 C376 442, 388 418, 378 392 C368 365, 340 346, 314 336 Z"
+          fill="url(#emeraldFeatherGrad)"
+          stroke="url(#silverTrimGrad)"
+          stroke-width="2.5"
+        />
+        <!-- Right inner tail plume -->
+        <path
+          d="M315 325 C352 345, 376 388, 364 428 C356 452, 328 458, 312 440 C334 434, 342 408, 334 382 C327 360, 312 344, 302 335 Z"
+          fill="url(#emeraldDarkGrad)"
+          stroke="url(#silverTrimGrad)"
+          stroke-width="2.2"
+        />
+        <!-- Center tail feather -->
+        <path
+          d="M300 328 C288 365, 288 415, 300 458 C312 415, 312 365, 300 328 Z"
+          fill="url(#emeraldFeatherGrad)"
+          stroke="url(#silverTrimGrad)"
+          stroke-width="2.2"
+        />
+      </g>
+
+      <!-- Left Wing (Upper Primary Feathers + Lower Secondary Feathers) -->
+      <g filter="url(#bevelShadow)">
+        <!-- Upper / Outer Left Feathers -->
+        <path d="M275 210 L145 105 L168 152 L112 142 L144 185 L92 186 L132 222 L88 232 L138 258 L112 272 L176 276 L275 245 Z"
+              fill="url(#emeraldFeatherGrad)" stroke="url(#silverTrimGrad)" stroke-width="2.5" stroke-linejoin="round" />
+        <!-- Inner / Lower Left Feathers -->
+        <path d="M278 238 L168 212 L192 238 L150 245 L186 268 L156 282 L212 292 L282 268 Z"
+              fill="url(#emeraldDarkGrad)" stroke="url(#silverTrimGrad)" stroke-width="2.2" stroke-linejoin="round" />
+      </g>
+
+      <!-- Right Wing (Upper Primary Feathers + Lower Secondary Feathers) -->
+      <g filter="url(#bevelShadow)">
+        <!-- Upper / Outer Right Feathers -->
+        <path d="M325 210 L455 105 L432 152 L488 142 L456 185 L508 186 L468 222 L512 232 L462 258 L488 272 L424 276 L325 245 Z"
+              fill="url(#emeraldFeatherGrad)" stroke="url(#silverTrimGrad)" stroke-width="2.5" stroke-linejoin="round" />
+        <!-- Inner / Lower Right Feathers -->
+        <path d="M322 238 L432 212 L408 238 L450 245 L414 268 L444 282 L388 292 L318 268 Z"
+              fill="url(#emeraldDarkGrad)" stroke="url(#silverTrimGrad)" stroke-width="2.2" stroke-linejoin="round" />
+      </g>
+
+      <!-- Phoenix Torso, Crest & Head -->
+      <g filter="url(#bevelShadow)">
+        <!-- Crown / Crest feathers -->
+        <path
+          d="M300 132 L284 95 L298 112 L303 82 L312 108 L324 94 L314 128 Z"
+          fill="url(#emeraldFeatherGrad)"
+          stroke="url(#silverTrimGrad)"
+          stroke-width="2"
+          stroke-linejoin="round"
+        />
+        <!-- Head & Beak -->
+        <path
+          d="M294 126 C284 134, 282 148, 288 160 L276 170 L292 172 C296 184, 294 205, 284 235 C276 260, 278 295, 300 332 C322 295, 324 260, 316 235 C306 205, 304 184, 308 172 L322 168 L310 158 C316 146, 312 132, 300 126 Z"
+          fill="url(#emeraldFeatherGrad)"
+          stroke="url(#silverTrimGrad)"
+          stroke-width="2.5"
+          stroke-linejoin="round"
+        />
+        <!-- Chest / Body Metallic Scales Accent -->
+        <path
+          d="M300 185 L288 225 L300 265 L312 225 Z"
+          fill="url(#silverTrimGrad)"
+          opacity="0.35"
+        />
+      </g>
+    </svg>
+
+    <div class="text-stack">
+      <h1 class="brand-title">GREEN PHOENIX</h1>
+
+      <div class="sub-alliance-wrap">
+        <span class="wing-rule" aria-hidden="true"></span>
+        <span class="sub-alliance">GROUP ALLIANCE</span>
+        <span class="wing-rule right" aria-hidden="true"></span>
+      </div>
+
+      <p class="network-line">INTEGRATED NETWORK LLP</p>
     </div>
-
+  </main>
 </body>
 </html>
